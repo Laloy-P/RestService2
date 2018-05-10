@@ -4,6 +4,7 @@ public class Approval {
 	
 	private int id;
 	private boolean response;
+	private String description;
 	
 	public int getId() {
 		return id;
@@ -17,6 +18,13 @@ public class Approval {
 	public void setResponse(boolean response) {
 		this.response = response;
 	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder approval = new StringBuilder();
@@ -34,4 +42,5 @@ public class Approval {
 		
 		return approval.toString();
 	}
+
 }

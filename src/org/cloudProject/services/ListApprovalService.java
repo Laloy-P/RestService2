@@ -15,13 +15,27 @@ public class ListApprovalService {
 		
 		StringBuilder approvals = new StringBuilder();
 		approvals.append("<ListApprovalService>");
+		approvals.append("<Approvals>");
 		if (ApprovalDB.ListApproval() != null) {
 			for (Approval element : ApprovalDB.ListApproval()) {
 				approvals.append("<Approval>");
-				approvals.append(element.toString());
+				approvals.append("<id>");
+				approvals.append(element.getId());
+				approvals.append("</id>");
+				approvals.append("<description>");
+				approvals.append(element.getDescription());
+				approvals.append("</description>");
+				approvals.append("<response>");
+				approvals.append(element.isResponse());
+				approvals.append("</response>");
 				approvals.append("</Approval>");
 			}
+		}else {
+			approvals.append("<Approval>");
+			approvals.append("No approval has been found");
+			approvals.append("</Approval>");
 		}
+		approvals.append("<Approval>");
 		approvals.append("</ListApprovalService>");
 		return  approvals.toString() ;
 
