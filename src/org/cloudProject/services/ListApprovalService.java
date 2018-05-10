@@ -22,7 +22,7 @@ public class ListApprovalService {
 				approvals.append("</Approval>");
 			}
 		}
-		approvals.append("</<ListApprovalService>>");
+		approvals.append("</ListApprovalService>");
 		return  approvals.toString() ;
 
 	}
