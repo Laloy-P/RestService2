@@ -18,16 +18,21 @@ public class ListApprovalService {
 		approvals.append("<Approvals>");
 		if (ApprovalDB.ListApproval() != null) {
 			for (Approval element : ApprovalDB.ListApproval()) {
+				
 				approvals.append("<Approval>");
-				approvals.append("<id>");
-				approvals.append(element.getId());
-				approvals.append("</id>");
-				approvals.append("<description>");
-				approvals.append(element.getDescription());
-				approvals.append("</description>");
-				approvals.append("<response>");
-				approvals.append(element.isResponse());
-				approvals.append("</response>");
+					
+					approvals.append("<id>");
+						approvals.append(element.getId());
+					approvals.append("</id>");
+					
+					approvals.append("<description>");
+						approvals.append(element.getDescription());
+					approvals.append("</description>");
+					
+					approvals.append("<response>");
+						approvals.append(element.isResponse());
+					approvals.append("</response>");
+					
 				approvals.append("</Approval>");
 			}
 		}else {
@@ -35,7 +40,7 @@ public class ListApprovalService {
 			approvals.append("No approval has been found");
 			approvals.append("</Approval>");
 		}
-		approvals.append("<Approval>");
+		approvals.append("</Approvals>");
 		approvals.append("</ListApprovalService>");
 		return  approvals.toString() ;
 
