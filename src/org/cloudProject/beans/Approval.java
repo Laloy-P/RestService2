@@ -22,9 +22,16 @@ public class Approval {
 		StringBuilder approval = new StringBuilder();
 		approval.append("Approval n° ");
 		approval.append(id);
-		approval.append("has a ");
-		approval.append(response);
-		approval.append("response");
+		approval.append(" is ");
+		if(response) {
+			approval.append(" positive ");
+		}else if (!response) {
+			approval.append(" negative ");
+		}else {
+			approval.append(" is on standby");
+		}
+		approval.append("\n");
+		
 		return approval.toString();
 	}
 }

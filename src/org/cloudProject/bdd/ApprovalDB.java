@@ -56,13 +56,14 @@ public class ApprovalDB {
 			System.out.println("connected");
 			try {
 				statement = connection.createStatement();
-				result = statement.executeQuery("SELECT id, loanResponse FROM Approval;");
+				result = statement.executeQuery("SELECT id, loanresponse FROM approval;");
+				result = statement.executeQuery("SELECT id, loanresponse FROM approval;");
 
 				while (result.next()) {
 					Approval approval = new Approval();
 
 					int id = result.getInt("id");
-					boolean response = result.getBoolean("loanResponse");
+					boolean response = result.getBoolean("loanresponse");
 
 					approval.setId(id);
 					approval.setResponse(response);

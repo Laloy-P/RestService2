@@ -1,3 +1,4 @@
 org/cloudProject/beans/Approval.class
+org/cloudProject/services/ListApprovalService.class
 org/cloudProject/bdd/ApprovalDB.class
 org/cloudProject/services/AddApprovalService.class
