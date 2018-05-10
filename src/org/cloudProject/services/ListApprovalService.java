@@ -16,8 +16,8 @@ public class ListApprovalService {
 		StringBuilder approvals = new StringBuilder();
 		approvals.append("<ListApprovalService>");
 		approvals.append("<Approvals>");
-		if (ApprovalDB.ListApproval() != null) {
-			for (Approval element : ApprovalDB.ListApproval()) {
+		if (ApprovalDB.listApproval() != null) {
+			for (Approval element : ApprovalDB.listApproval()) {
 				
 				approvals.append("<Approval>");
 					

@@ -15,12 +15,83 @@ import org.cloudProject.beans.Approval;
 
 public class ApprovalDB {
 	
+	public static void deleteApproval(int id) {
+
+		final String deleteResquest = "DELETE FROM `approval` WHERE `id` =  ? ;";
+
+		System.out.println("-------- PostgreSQL JDBC Connection to ApprovalDB Starting : deleterequest ------------");
+		try {
+
+			Class.forName("org.postgresql.Driver");
+
+		} catch (ClassNotFoundException e) {
+
+			System.out.println("No PostgreSQL JDBC Driver found.");
+			e.printStackTrace();
+			return;
+
+		}
+		System.out.println("PostgreSQL JDBC Driver Registered!");
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet result = null;
+
+		try {
+
+			connection = getConnection();
+		} catch (SQLException e) {
+
+			System.out.println("Connection Failed! Check output console");
+			e.printStackTrace();
+			return ;
+
+		} catch (URISyntaxException e) {
+			System.err.println("URI problem append");
+			e.printStackTrace();
+		}
+
+		if (connection != null) {
+			System.out.println("connected");
+			try {
+				preparedStatement = connection.prepareStatement(deleteResquest);
+				preparedStatement.setInt(1, id);
+				preparedStatement.executeUpdate();
+
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				try {
+					if (connection != null) {
+						connection.close();
+					}
+					if (preparedStatement != null) {
+						preparedStatement.close();
+					}
+					if (result != null) {
+						result.close();
+					}
+
+				} catch (SQLException e) {
+					System.out.println("Failed to close connection!");
+					e.printStackTrace();
+				}
+			}
+
+		} else {
+			System.out.println("Failed to make connection!");
+		}
+		return;
+	}
+
 	public static void addApproval(boolean response, String description) {
 
 		String insertResquest = "INSERT INTO approval (loanresponse, description)" + 
 								" VALUES (?, ?);";
 
-		System.out.println("-------- PostgreSQL JDBC Connection to ApprovalDB Starting ------------");
+		System.out.println("-------- PostgreSQL JDBC Connection to ApprovalDB Starting : addrequest ------------");
 		try {
 
 			Class.forName("org.postgresql.Driver");
@@ -87,11 +158,12 @@ public class ApprovalDB {
 		}
 		return;
 	}
-	public static List<Approval> ListApproval() {
+	
+	public static List<Approval> listApproval() {
 
 		List<Approval> approvals = new ArrayList<>();
 
-		System.out.println("-------- PostgreSQL JDBC Connection to ApprovalDB Starting ------------");
+		System.out.println("-------- PostgreSQL JDBC Connection to ApprovalDB Starting : consultrequest ------------");
 		try {
 
 			Class.forName("org.postgresql.Driver");
