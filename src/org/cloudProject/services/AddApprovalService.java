@@ -10,6 +10,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.cloudProject.bdd.ApprovalDB;
+
 
 @Path("/AddApproval")
 public class AddApprovalService {
@@ -25,14 +27,10 @@ public class AddApprovalService {
 	@POST
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public void newTodo(@FormParam("id") String id, @FormParam("response") boolean response,
+	public void newTodo(@FormParam("response") boolean response,
 			@FormParam("description") String description)
 			throws IOException {
-			System.out.println(id);
-			System.out.println(description);
-			System.out.println(response);
-				
-
-				
-	}
+			ApprovalDB.addApproval((boolean)response, description);
+		
+			}
 }
