@@ -86,8 +86,8 @@ public class ApprovalDB {
 		return;
 	}
 
-	public static void addApproval(boolean response, String description) {
-
+	public static void addApproval(Boolean response, String description) {
+		
 		String insertResquest = "INSERT INTO approval (loanresponse, description)" + 
 								" VALUES (?, ?);";
 
@@ -163,7 +163,7 @@ public class ApprovalDB {
 
 		List<Approval> approvals = new ArrayList<>();
 
-		System.out.println("-------- PostgreSQL JDBC Connection to ApprovalDB Starting : consultrequest ------------");
+		System.out.println("-------- PostgreSQL JDBC Connection to ApprovalDB Starting : consultRequest ------------");
 		try {
 
 			Class.forName("org.postgresql.Driver");
@@ -206,7 +206,7 @@ public class ApprovalDB {
 					Approval approval = new Approval();
 
 					int id = result.getInt("id");
-					boolean response = result.getBoolean("loanresponse");
+					Boolean response = result.getBoolean("loanresponse");
 					String description =  result.getString("description");
 					approval.setId(id);
 					approval.setResponse(response);

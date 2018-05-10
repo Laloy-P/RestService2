@@ -3,7 +3,7 @@ package org.cloudProject.beans;
 public class Approval {
 	
 	private int id;
-	private boolean response;
+	private Boolean response;
 	private String description;
 	
 	public int getId() {
@@ -15,7 +15,7 @@ public class Approval {
 	public boolean isResponse() {
 		return response;
 	}
-	public void setResponse(boolean response) {
+	public void setResponse(Boolean response) {
 		this.response = response;
 	}
 	public String getDescription() {
