@@ -30,10 +30,11 @@ public class ListApprovalService {
 					approvals.append("</description>");
 					
 					approvals.append("<response>");
-						if(element.isResponse() != null) {
-							approvals.append(element.isResponse());
-						}else {
+						if(element.isResponse() == null) {
 							approvals.append("standBy");
+							
+						}else {
+							approvals.append(element.isResponse());
 						}
 					approvals.append("</response>");
 					

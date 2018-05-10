@@ -206,7 +206,7 @@ public class ApprovalDB {
 					Approval approval = new Approval();
 
 					int id = result.getInt("id");
-					Boolean response = result.getBoolean("loanresponse");
+					Boolean response = (Boolean)result.getBoolean("loanresponse");
 					String description =  result.getString("description");
 					approval.setId(id);
 					approval.setResponse(response);
