@@ -30,10 +30,10 @@ public class ListApprovalService {
 					approvals.append("</description>");
 					
 					approvals.append("<response>");
-						if(element.isResponse() || !element.isResponse()) {
+						if(element.isResponse() != null) {
 							approvals.append(element.isResponse());
 						}else {
-							approvals.append("Demande en attente de validation");
+							approvals.append("standBy");
 						}
 					approvals.append("</response>");
 					

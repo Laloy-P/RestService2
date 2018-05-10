@@ -12,7 +12,7 @@ public class Approval {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public boolean isResponse() {
+	public Boolean isResponse() {
 		return response;
 	}
 	public void setResponse(Boolean response) {
