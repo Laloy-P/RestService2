@@ -3,8 +3,9 @@ package org.cloudProject.beans;
 public class Approval {
 	
 	private int id;
-	private Boolean response;
+	private String response;
 	private String description;
+	private String name;
 	
 	public int getId() {
 		return id;
@@ -12,10 +13,10 @@ public class Approval {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Boolean isResponse() {
+	public String getResponse() {
 		return response;
 	}
-	public void setResponse(Boolean response) {
+	public void setResponse(String response) {
 		this.response = response;
 	}
 	public String getDescription() {
@@ -24,6 +25,12 @@ public class Approval {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 	@Override
 	public String toString() {
@@ -31,10 +38,10 @@ public class Approval {
 		approval.append("Approval n° ");
 		approval.append(id);
 		approval.append(" is ");
-		if(response) {
-			approval.append(" positive ");
-		}else if (!response) {
-			approval.append(" negative ");
+		if(getResponse().equals("accepted")) {
+			approval.append("accepted");
+		}else if (getResponse().equals("refused")) {
+			approval.append("refused");
 		}else {
 			approval.append(" is on standby");
 		}
@@ -42,5 +49,7 @@ public class Approval {
 		
 		return approval.toString();
 	}
+	
+	
 
 }

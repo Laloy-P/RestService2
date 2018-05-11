@@ -27,10 +27,10 @@ public class AddApprovalService {
 	@POST
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public void newTodo(@FormParam("response") Boolean response, @FormParam("description") String description)
+	public void newTodo(@FormParam("response") String response, @FormParam("description") String description, @FormParam("name") String name)
 			throws IOException {
 			
-		ApprovalDB.addApproval((Boolean)response, description);
+		ApprovalDB.addApproval(response, description, name);
 		
 	}
 }

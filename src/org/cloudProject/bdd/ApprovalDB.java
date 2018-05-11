@@ -86,10 +86,10 @@ public class ApprovalDB {
 		return;
 	}
 
-	public static void addApproval(Boolean response, String description) {
+	public static void addApproval(String response, String description, String name) {
 		
-		String insertResquest = "INSERT INTO approval (loanresponse, description)" + 
-								" VALUES (?, ?);";
+		final String INSERTREQUEST = "INSERT INTO approval (loanresponse, description, name)" + 
+								" VALUES (?, ?, ?);";
 
 		System.out.println("-------- PostgreSQL JDBC Connection to ApprovalDB Starting : addrequest ------------");
 		try {
@@ -126,9 +126,10 @@ public class ApprovalDB {
 		if (connection != null) {
 			System.out.println("connected");
 			try {
-				preparedStatement = connection.prepareStatement(insertResquest);
-				preparedStatement.setBoolean(1, response);
+				preparedStatement = connection.prepareStatement(INSERTREQUEST);
+				preparedStatement.setString(1, response);
 				preparedStatement.setString(2, description);
+				preparedStatement.setString(3, name);
 				preparedStatement.executeUpdate();
 
 
@@ -199,18 +200,20 @@ public class ApprovalDB {
 			System.out.println("connected");
 			try {
 				statement = connection.createStatement();
-				result = statement.executeQuery("SELECT id, loanresponse, description FROM approval;");
+				result = statement.executeQuery("SELECT id, loanresponse, description, name FROM approval;");
 				
 
 				while (result.next()) {
 					Approval approval = new Approval();
 
 					int id = result.getInt("id");
-					Boolean response = (Boolean)result.getBoolean("loanresponse");
+					String response = result.getString("loanresponse");
 					String description =  result.getString("description");
+					String name = result.getString("name");
 					approval.setId(id);
 					approval.setResponse(response);
 					approval.setDescription(description);
+					approval.setName(name);
 
 					approvals.add(approval);
 

@@ -3,6 +3,7 @@ package org.cloudProject.services;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
 import org.cloudProject.bdd.ApprovalDB;
 import org.cloudProject.beans.Approval;
@@ -25,17 +26,16 @@ public class ListApprovalService {
 						approvals.append(element.getId());
 					approvals.append("</id>");
 					
+					approvals.append("<name>");
+						approvals.append(element.getName());
+					approvals.append("</name>");
+					
 					approvals.append("<description>");
 						approvals.append(element.getDescription());
 					approvals.append("</description>");
 					
 					approvals.append("<response>");
-						if(element.isResponse() == null) {
-							approvals.append("standBy");
-							
-						}else {
-							approvals.append(element.isResponse());
-						}
+						approvals.append(element.getResponse());
 					approvals.append("</response>");
 					
 				approvals.append("</Approval>");
@@ -47,6 +47,8 @@ public class ListApprovalService {
 		}
 		approvals.append("</Approvals>");
 		approvals.append("</ListApprovalService>");
+		
+		Response.ok();
 		return  approvals.toString() ;
 
 	}
