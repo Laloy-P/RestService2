@@ -11,6 +11,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ws.rs.core.Response;
+
 import org.cloudProject.beans.Approval;
 
 public class ApprovalDB {
@@ -247,13 +249,17 @@ public class ApprovalDB {
 	}
 
 	private static Connection getConnection() throws URISyntaxException, SQLException {
-		URI dbUri = new URI(System.getenv("DATABASE_URL"));
-
-		String username = dbUri.getUserInfo().split(":")[0];
-		String password = dbUri.getUserInfo().split(":")[1];
-		String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath()
-				+ "?sslmode=require";
-
-		return DriverManager.getConnection(dbUrl, username, password);
+		if (System.getenv("DATABASE_URL") != null) {
+			URI dbUri = new URI(System.getenv("DATABASE_URL"));
+	
+			String username = dbUri.getUserInfo().split(":")[0];
+			String password = dbUri.getUserInfo().split(":")[1];
+			String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath()
+					+ "?sslmode=require";
+	
+			return DriverManager.getConnection(dbUrl, username, password);
+		}
+		Response.serverError();
+		return null;
 	}
 }

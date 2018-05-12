@@ -1,8 +1,12 @@
 package org.cloudProject.services;
 
+
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.cloudProject.bdd.ApprovalDB;
@@ -10,6 +14,7 @@ import org.cloudProject.beans.Approval;
 
 @Path("/ListApprovals")
 public class ListApprovalService {
+/*	
 	@GET
 	@Produces("application/xml")
 	public String getListApproval() {
@@ -52,4 +57,19 @@ public class ListApprovalService {
 		return  approvals.toString() ;
 
 	}
+*/	
+	 @GET
+	 @Produces(MediaType.APPLICATION_XML)
+	 public List<Approval> responseMsg( ) {
+		 	
+		 if(ApprovalDB.listApproval() != null) {
+		 		return ApprovalDB.listApproval();
+		 }
+	         
+		 	Response.ok();
+			
+		 	return null;
+	 
+	     }
+	
 }
