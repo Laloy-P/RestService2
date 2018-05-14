@@ -1,6 +1,5 @@
 package org.cloudProject.beans;
 
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "approval")
@@ -20,7 +19,7 @@ public class Approval {
 		this.description = description;
 		this.name = name;
 	}
-	@XmlElement
+	
 	public int getId() {
 		return id;
 	}
@@ -28,7 +27,7 @@ public class Approval {
 		this.id = id;
 	}
 	
-	@XmlElement
+	
 	public void setResponse(String response) {
 		this.response = response;
 	}
@@ -36,7 +35,7 @@ public class Approval {
 		return response;
 	}
 	
-	@XmlElement
+	
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -44,7 +43,7 @@ public class Approval {
 		return description;
 	}
 	
-	@XmlElement
+	
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -52,7 +51,7 @@ public class Approval {
 		return name;
 	}
 		
-	@Override
+	
 	public String toString() {
 		StringBuffer approval = new StringBuffer();
 		approval.append("Approval n° ");

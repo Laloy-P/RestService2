@@ -19,14 +19,14 @@ public class ListApprovalService {
 	 @GET
 	 @Produces (MediaType.APPLICATION_JSON)
 	 public List<Approval> getXMLApprovals() {
-		 /*
+		 
 		 List<Approval>localTest = new ArrayList<>();
 		 localTest.add(new Approval(1,"bleu","bleu","bleu"));
 		 localTest.add(new Approval(2,"rouge","rouge","rouge"));
 		 localTest.add(new Approval(3,"vert","vert","vert"));
 		 
 		 return localTest;
-		 */
+		 /*
 		 if(ApprovalDB.listApproval() != null) {
 		 		return ApprovalDB.listApproval();
 		 }
@@ -34,7 +34,7 @@ public class ListApprovalService {
 		 	Response.ok();
 			
 		 	return null;
-		 	
+		 	*/
 	 }
 
 	
