@@ -1,7 +1,7 @@
 package org.cloudProject.services;
 
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -20,7 +20,7 @@ public class ListApprovalService {
 	 @Produces (MediaType.APPLICATION_JSON)
 	 public List<Approval> getXMLApprovals() {
 		 /*
-		 List<Approval>localTest = new ArrayList<>();
+		 List<Approval> localTest = new ArrayList<>();
 		 localTest.add(new Approval(1,"bleu","bleu","bleu"));
 		 localTest.add(new Approval(2,"rouge","rouge","rouge"));
 		 localTest.add(new Approval(3,"vert","vert","vert"));
