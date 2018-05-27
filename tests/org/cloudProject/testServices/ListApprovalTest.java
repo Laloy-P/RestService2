@@ -11,7 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ListApprovalServiceTest {
+public class ListApprovalTest {
 
 	//private Approval approval;
 	int statusCode = 0;
